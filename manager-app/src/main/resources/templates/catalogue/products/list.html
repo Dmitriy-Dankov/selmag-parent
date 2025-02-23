@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Список товаров &ndash; Сельмаг</title>
+</head>
+<body>
+<a data-th-href="@{/catalogue/products/create}">+ Создать товар</a>
+  <h1>Список товаров:</h1>
+<form method="get" data-th-action="@{/catalogue/products/list}">
+  <label for="filter">Фильтр:   </label>
+  <input type="text" name="filter" id="filter" data-th-value="${filter}"> </input>
+  <button type="submit">Поиск</button>
+</form>
+<p></p>
+  <table style="width: 320px">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Товар</th>
+        <th>Описание</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-th-each="product : ${products}">
+        <td data-th-text="${product.id}"></td>
+        <td>
+          <a data-th-href="@{/catalogue/products/{productId}(productId=${product.id})}"
+             data-th-text="${product.title}"></a>
+        </td>
+        <td data-th-text="${product.details}"></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
