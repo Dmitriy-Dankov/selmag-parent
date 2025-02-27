@@ -20,7 +20,7 @@ services:
 #      - 5433:5432
 
   selmag-keycloak:
-    image: quay.io/keycloak/keycloak:23.0.4
+    image: quay.io/keycloak/keycloak:26.1.1
     restart: always
     environment:
       KEYCLOAK_ADMIN: admin
@@ -28,5 +28,5 @@ services:
     ports:
       - 8082:8080
     volumes:
-      - .config/keycloak/import:/opt/keycloak/keycloak:23.0.4
+      - /config/keycloak/import:/opt/keycloak/data/import
     command: start-dev --import-realm
